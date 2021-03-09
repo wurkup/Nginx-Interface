@@ -13,20 +13,25 @@ def landing():
     """
     return render_template('index.html')
 
-@app.route('/server-start')
-def startserver():
+@app.route('/server-status',methods=["GET"])
+def statusserver():
     '''
     With exit code 0,127 we can see if nginx is installed or not 
     '''
-    is_installed = subprocess.call(" nginx",shell=True)
+    is_installed = subprocess.call("nginx -ver",shell=True)
     print("The exit code was: %s" % is_installed)
+    if is_installed is 127:
+        return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"}
+    return {"code":200,"msg":"Nginx available"}
 
 @app.route('/config/<name>',methods=["PUT"])
 def create_config(name):
+    '''
+    Function to write the contents of conf to a file
+    '''
     data = request.json
     n.create(name,data['content'])
     return "ok"
 
-# startserver()
 app.run()
 
