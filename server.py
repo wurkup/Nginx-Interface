@@ -24,6 +24,14 @@ def statusserver():
         return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"}
     return {"code":200,"msg":"Nginx available"}
 
+@app.route('/config/<field>',methods=["GET"])
+def field_config(field):
+    '''
+    returns list of configs,details of a particular config.
+    '''
+    if field =="list":
+        return {"code":200,"files":n.get_list()}
+
 @app.route('/config/<name>',methods=["PUT"])
 def create_config(name):
     '''
@@ -31,6 +39,14 @@ def create_config(name):
     '''
     data = request.json
     n.create(name,data['content'])
+    return "ok"
+
+@app.route('/config/<name>',methods=["GET"])
+def get_config(name):
+    '''
+    Function to write the contents of conf to a file
+    '''
+    conf_content=n.get_conf(name)
     return "ok"
 
 app.run()
