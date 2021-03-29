@@ -49,5 +49,14 @@ def get_config(fname):
     conf_content=n.get_conf(fname)
     return conf_content
 
+@app.route('/config/i/<fname>',methods=["PUT"])
+def modified_config(fname):
+    '''
+    Function to write the modified contents of conf file
+    '''
+    data = request.json
+    conf_content=n.modified_conf(fname,data['content'])
+    return conf_content
+
 app.run()
 

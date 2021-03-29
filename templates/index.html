@@ -25,13 +25,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
               <select onchange="get_file()" class="form-select" id="select-file" aria-label="Select file">
                 <option selected>Select file</option>
                 <!--Rest are loaded dynamically-->
               </select>
+              <li class="nav-item">
+                <a class="nav-link active" onclick="file_save()" id="save-btn" aria-current="page" href="#">Save</a>
+              </li>
             </ul>
           </div>
         </div>

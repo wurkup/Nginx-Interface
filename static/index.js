@@ -42,3 +42,21 @@ function get_file()
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+function file_save()
+{
+    var sel = document.getElementById("select-file")
+    var filename = sel.value;
+    let url = "/config/i/"+filename
+    var xhttp = new XMLHttpRequest();
+    var editor = document.getElementById("editor")
+    var file_content = {}
+    file_content["content"] = editor.value.split("\n")   
+    xhttp.onreadystatechange = function () {
+        if (this.status == 200) {
+            alert("file saved")
+        }
+    };
+    xhttp.open("PUT", url, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(JSON.stringify(file_content));
+}

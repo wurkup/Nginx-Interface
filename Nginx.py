@@ -32,3 +32,13 @@ class Nginx:
             return content
         except Exception as e:
             print(e)
+    
+    def modified_conf(self,name,data):
+        try:
+            path = NGINX_PATH[DEVICE]+"{}{}".format("/",name)
+            conf_file = open("blah.conf","w")
+            for each in data:
+                conf_file.write("%s\n" % each)
+            return "ok"
+        except Exception as e:
+            print(e)
