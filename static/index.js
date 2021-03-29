@@ -60,3 +60,13 @@ function file_save()
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(JSON.stringify(file_content));
 }
+function test_conf()
+{
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        var msg = JSON.parse(this.responseText)
+        alert(msg.msg)
+    };
+    xhttp.open("GET", "config/test", true);
+    xhttp.send();
+}

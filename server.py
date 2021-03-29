@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request
 import os,subprocess
+from subprocess import check_output
 from Nginx import Nginx
 gui_dir = os.path.join(os.path.dirname(__file__), 'templates')
 static_dir = os.path.join(os.path.dirname(__file__), 'static')
@@ -31,6 +32,13 @@ def field_config(field):
     '''
     if field =="list":
         return {"code":200,"files":n.get_list()}
+    elif field == "test":
+        exitcode = subprocess.call("nginx -t",shell=True)
+        if exitcode is 1:
+            process = subprocess.Popen('nginx -t', shell= True,stderr=subprocess.PIPE)
+            out_msg = process.stderr.read()
+            return {"code":403,"msg":out_msg.decode("utf-8")}
+        return {"code":200,"msg":"nginx configuration test success"}
 
 @app.route('/config/<name>',methods=["PUT"])
 def create_config(name):
