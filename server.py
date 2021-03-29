@@ -41,13 +41,13 @@ def create_config(name):
     n.create(name,data['content'])
     return "ok"
 
-@app.route('/config/<name>',methods=["GET"])
-def get_config(name):
+@app.route('/config/i/<fname>',methods=["GET"])
+def get_config(fname):
     '''
-    Function to write the contents of conf to a file
+    Function to get the contents of conf file
     '''
-    conf_content=n.get_conf(name)
-    return "ok"
+    conf_content=n.get_conf(fname)
+    return conf_content
 
 app.run()
 

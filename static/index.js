@@ -27,3 +27,18 @@ function list_files()
     xhttp.open("GET", "/config/list", true);
     xhttp.send();
 }
+function get_file()
+{
+    var sel = document.getElementById("select-file")
+    var filename = sel.value;
+    let url = "/config/i/"+filename
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.status == 200) {
+            var editor = document.getElementById("editor")
+            editor.textContent = this.responseText
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}

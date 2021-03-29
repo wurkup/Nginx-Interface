@@ -1,5 +1,5 @@
 from settings import *
-import os
+import os,json
 class Nginx:
     def __init__(self):
         pass
@@ -26,6 +26,9 @@ class Nginx:
     
     def get_conf(self,name):
         try:
-            pass
+            path = NGINX_PATH[DEVICE]+"{}{}".format("/",name)
+            f = open(path,"r")
+            content = f.read()
+            return content
         except Exception as e:
             print(e)

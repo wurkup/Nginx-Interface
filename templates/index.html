@@ -28,7 +28,7 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
-              <select class="form-select" id="select-file" aria-label="Select file">
+              <select onchange="get_file()" class="form-select" id="select-file" aria-label="Select file">
                 <option selected>Select file</option>
                 <!--Rest are loaded dynamically-->
               </select>
@@ -36,7 +36,7 @@
           </div>
         </div>
       </nav>
-<section id="editor">
+<section id="editor-sec">
   <div class="container">
   <div class="form-floating">
     <textarea class="form-control" placeholder="file content..." id="editor"></textarea>
