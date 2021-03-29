@@ -5,7 +5,7 @@ gui_dir = os.path.join(os.path.dirname(__file__), 'templates')
 static_dir = os.path.join(os.path.dirname(__file__), 'static')
 n = Nginx()
 app = Flask(__name__, static_folder=static_dir, template_folder=gui_dir)
-
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 @app.route('/')
 def landing():
     """
