@@ -21,7 +21,7 @@ def statusserver():
     '''
     is_installed = subprocess.call("nginx -ver",shell=True)
     print("The exit code was: %s" % is_installed)
-    if is_installed is 127:
+    if is_installed == 127:
         return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"}
     return {"code":200,"msg":"Nginx available"}
 
@@ -34,7 +34,7 @@ def field_config(field):
         return {"code":200,"files":n.get_list()}
     elif field == "test":
         exitcode = subprocess.call("nginx -t",shell=True)
-        if exitcode is 1:
+        if exitcode == 1:
             process = subprocess.Popen('nginx -t', shell= True,stderr=subprocess.PIPE)
             out_msg = process.stderr.read()
             return {"code":403,"msg":out_msg.decode("utf-8")}

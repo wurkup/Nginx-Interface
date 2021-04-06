@@ -36,7 +36,7 @@ class Nginx:
     def modified_conf(self,name,data):
         try:
             path = NGINX_PATH[DEVICE]+"{}{}".format("/",name)
-            conf_file = open("blah.conf","w")
+            conf_file = open(path,"w")
             for each in data:
                 conf_file.write("%s\n" % each)
             return "ok"
