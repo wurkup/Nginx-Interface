@@ -17,10 +17,18 @@ class Nginx:
         except Exception as e:
             print(e)
             return "error"
-    def get_list(self):
+
+    def get_file_list(self):
         try:
             lis_files = os.listdir(NGINX_PATH[DEVICE])
             return lis_files
+        except Exception as e:
+            print(e)
+
+    def get_folder_list(self):
+        try:
+            lis_folder =[ y for y in os.listdir(NGINX_PATH[DEVICE]) if os.path.isdir(NGINX_PATH[DEVICE]+"{}{}".format("/",y)) ]
+            return lis_folder
         except Exception as e:
             print(e)
     

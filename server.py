@@ -25,14 +25,18 @@ def statusserver():
         return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"}
     return {"code":200,"msg":"Nginx available"}
 
-@app.route('/config/<field>',methods=["GET"])
-def field_config(field):
+@app.route('/config/<_type>/<field>',methods=["GET"])
+@app.route('/config/<_type>',methods=["GET"])
+def field_config(_type,field=None):
     '''
     returns list of configs,details of a particular config.
     '''
-    if field =="list":
-        return {"code":200,"files":n.get_list()}
-    elif field == "test":
+    if _type =="list":
+        if field == "file":
+            return {"code":200,"files":n.get_file_list()}
+        if field == "folder":
+            return {"code":200,"folders":n.get_folder_list()}
+    elif _type == "test":
         exitcode = subprocess.call("nginx -t",shell=True)
         if exitcode == 1:
             process = subprocess.Popen('nginx -t', shell= True,stderr=subprocess.PIPE)
