@@ -31,8 +31,11 @@ def field_config(_type,field=None):
     '''
     returns list of configs,details of a particular config.
     '''
+    folder_name = request.args.get("folder_name",None)
     if _type =="list":
         if field == "file":
+            if folder_name:
+                return {"code":200,"files":n.get_folder_files(folder_name)}
             return {"code":200,"files":n.get_file_list()}
         if field == "folder":
             return {"code":200,"folders":n.get_folder_list()}

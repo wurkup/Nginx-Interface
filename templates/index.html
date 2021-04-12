@@ -27,8 +27,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              <select onchange="folder_files()" class="form-select" id="select-folder" aria-label="Select folder">
+                <option selected>Select Folder</option>
+                <!--Rest are loaded dynamically-->
+              </select>
               <select onchange="get_file()" class="form-select" id="select-file" aria-label="Select file">
-                <option selected>Select file</option>
+                <option selected>Select File</option>
                 <!--Rest are loaded dynamically-->
               </select>
               <li class="nav-item">

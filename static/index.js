@@ -4,18 +4,40 @@ async function check_server() {
         alert("Nginx not found! Install & restart the UI.")
     }
     else if (resp.status == 200) {
-        await list_files()
+        await list_folders()
     }
 }
-async function list_files() {
-    const resp = await fetch('/config/list')
+async function list_folders() {
+    const resp = await fetch('config/list/folder')
+    if (resp.status == 200) {
+        var jsonResponse = await resp.json()
+        for (var i = 0; i < jsonResponse.folders.length; i++) {
+            var sel = document.getElementById("select-folder")
+            var op = document.createElement("option")
+            op.value, op.text = jsonResponse.folders[i]
+            sel.appendChild(op)
+        }
+    }
+}
+async function folder_files() {
+    var selfolder = document.getElementById("select-folder")
+    var foldername = selfolder.value;
+    var selfile = document.getElementById("select-file")
+    selfile.options.length=1
+    var resp
+    if(foldername=="/")
+    {
+        resp = await fetch('config/list/file')
+    }
+    else{
+        resp = await fetch('config/list/file?folder_name='+foldername)
+    }
     if (resp.status == 200) {
         var jsonResponse = await resp.json()
         for (var i = 0; i < jsonResponse.files.length; i++) {
-            var sel = document.getElementById("select-file")
             var op = document.createElement("option")
             op.value, op.text = jsonResponse.files[i]
-            sel.appendChild(op)
+            selfile.appendChild(op)
         }
     }
 }

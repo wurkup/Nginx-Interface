@@ -18,9 +18,17 @@ class Nginx:
             print(e)
             return "error"
 
+    def get_folder_files(self,folder_name):
+        try:
+            path = NGINX_PATH[DEVICE]+"{}{}".format("/",folder_name)
+            lis_files =[ y for y in os.listdir(path) if not os.path.isdir(path) ]
+            return lis_files
+        except Exception as e:
+            print(e)
+
     def get_file_list(self):
         try:
-            lis_files = os.listdir(NGINX_PATH[DEVICE])
+            lis_files =[ y for y in os.listdir(NGINX_PATH[DEVICE]) if not os.path.isdir(NGINX_PATH[DEVICE]+"{}{}".format("/",y)) ]
             return lis_files
         except Exception as e:
             print(e)
@@ -28,6 +36,7 @@ class Nginx:
     def get_folder_list(self):
         try:
             lis_folder =[ y for y in os.listdir(NGINX_PATH[DEVICE]) if os.path.isdir(NGINX_PATH[DEVICE]+"{}{}".format("/",y)) ]
+            lis_folder.insert(0,"/")
             return lis_folder
         except Exception as e:
             print(e)
