@@ -48,7 +48,7 @@ async function get_file() {
     const resp = await fetch(url)
     if (resp.status == 200) {
         var editor = document.getElementById("editor")
-        editor.textContent = await resp.text()
+        editor.value = await resp.text()
     }
 }
 async function file_save() {
