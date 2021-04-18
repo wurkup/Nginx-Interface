@@ -1,7 +1,7 @@
 async function check_server() {
     const resp = await fetch('/server-status')
     if (resp.status != 200) {
-        alert("Nginx not found! Install & restart the UI.")
+        swal( "Oops","NGINX not found. Please install and refresh this page" ,"error" )
     }
     else if (resp.status == 200) {
         await list_folders()
@@ -66,13 +66,17 @@ async function file_save() {
         body: JSON.stringify(file_content)
     })
     if (response.status == 200) {
-        alert("file saved")
-    };
+        console.log("response",response);
+        swal("Success","Your file has been saved", "success")
+    }
+    else {
+    swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+    }
 }
 async function test_conf() {
     const resp = await fetch('/config/test')
     if (resp.status == 200) {
         var msg = await resp.json()
-        alert(msg.msg)
+        swal("",msg.msg,"info")
     }
 }
