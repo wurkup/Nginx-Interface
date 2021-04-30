@@ -12,3 +12,7 @@ footer
 {
     margin-top: 2%;
 }
+.nav-link
+{
+    cursor: pointer;
+}
