@@ -1,14 +1,22 @@
 # Nginx-Interface
-The dashboard for managing Nginx reverse proxy
+The dashboard for managing Nginx configurations
 
-# Requirements
-- `python3`
-- `pip3`
+## Features
+- 1
+- 2
 
-# Running locally
+# Getting Started
+## Deploy using docker-compose
+- steps for doicker compose
+
+## Run it local
+- Make sure to have `python3`,`pip3` installed
+- Clone the repository `https://github.com/nginxinc/nginx-plus-dashboard.git`
 - Create virtual env 
     - `python3 -m venv env`
 - Activate virtual environment
     - `source env/bin/activate`
 - `python3 server.py`
-- go to -> `http://localhost:5000`
+
+# See UI
+- `http://localhost:5000`
