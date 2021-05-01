@@ -7,7 +7,15 @@ The dashboard for managing Nginx configurations
 
 # Getting Started
 ## Deploy using docker-compose
-- steps for doicker compose
+- There is a `docker-compose.yml` file in deploy/docker which deploys the latest docker instance
+- Make sure to update `volumes` to your nginx path 
+    - Ex:
+        - `mac`: `/usr/local/etc/nginx:/usr/local/etc/nginx`
+        - `linux` : `etc/nginx:/etc/nginx`
+- `sudo docker-compose -f docker-compose.yml up -d`
+
+## Running docker
+`docker run -d --restart=always --name nginx-interface -v /usr/local/etc/nginx:/usr/local/etc/nginx -p 5000:5000 nginx-interface:latest`
 
 ## Run it local
 - Make sure to have `python3`,`pip3` installed
