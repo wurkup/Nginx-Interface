@@ -61,7 +61,8 @@ def get_config(fname):
     '''
     Function to get the contents of conf file
     '''
-    conf_content=n.get_conf(fname)
+    folder_name = request.args.get('folder_name',None)
+    conf_content=n.get_conf(folder_name,fname)
     return conf_content
 
 @app.route('/config/i/<fname>',methods=["PUT"])
@@ -69,8 +70,9 @@ def modified_config(fname):
     '''
     Function to write the modified contents of conf file
     '''
+    foldername = request.args.get('folder_name',None)
     data = request.json
-    conf_content=n.modified_conf(fname,data['content'])
+    conf_content=n.modified_conf(fname,foldername,data['content'])
     return conf_content
 
 app.run(host='0.0.0.0')

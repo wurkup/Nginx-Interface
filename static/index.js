@@ -44,7 +44,13 @@ async function folder_files() {
 async function get_file() {
     var sel = document.getElementById("select-file")
     var filename = sel.value;
+    var selectfolder = document.getElementById("select-folder")
+    var folder_name = selectfolder.value
     let url = "/config/i/" + filename
+    if(folder_name !="/")
+    {
+        url = "/config/i/" + filename+"?folder_name="+folder_name
+    }
     const resp = await fetch(url)
     if (resp.status == 200) {
         var editor = document.getElementById("editor")
@@ -54,7 +60,13 @@ async function get_file() {
 async function file_save() {
     var sel = document.getElementById("select-file")
     var filename = sel.value;
+    var selectfolder = document.getElementById("select-folder")
+    var folder_name = selectfolder.value
     let url = "/config/i/" + filename
+    if(folder_name !="/")
+    {
+        url = "/config/i/" + filename+"?folder_name="+folder_name
+    }
     var editor = document.getElementById("editor")
     var file_content = {}
     file_content["content"] = editor.value.split("\n")

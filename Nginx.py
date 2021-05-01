@@ -21,7 +21,7 @@ class Nginx:
     def get_folder_files(self,folder_name):
         try:
             path = NGINX_PATH[DEVICE]+"{}{}".format("/",folder_name)
-            lis_files =[ y for y in os.listdir(path) if not os.path.isdir(path) ]
+            lis_files =[ y for y in os.listdir(path) if not os.path.isdir(y) ]
             return lis_files
         except Exception as e:
             print(e)
@@ -41,18 +41,23 @@ class Nginx:
         except Exception as e:
             print(e)
     
-    def get_conf(self,name):
+    def get_conf(self,folder_name,file_name):
         try:
-            path = NGINX_PATH[DEVICE]+"{}{}".format("/",name)
+            path = NGINX_PATH[DEVICE]+"{}{}".format("/",file_name)
+            if folder_name:
+                path = NGINX_PATH[DEVICE]+"{}{}{}{}".format("/",folder_name,"/",file_name)
+            print(path,folder_name)
             f = open(path,"r")
             content = f.read()
             return content
         except Exception as e:
             print(e)
     
-    def modified_conf(self,name,data):
+    def modified_conf(self,file_name,folder_name,data):
         try:
-            path = NGINX_PATH[DEVICE]+"{}{}".format("/",name)
+            path = NGINX_PATH[DEVICE]+"{}{}".format("/",file_name)
+            if folder_name:
+                path = NGINX_PATH[DEVICE]+"{}{}{}{}".format("/",folder_name,"/",file_name)
             conf_file = open(path,"w")
             for each in data:
                 conf_file.write("%s\n" % each)
