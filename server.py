@@ -73,5 +73,5 @@ def modified_config(fname):
     conf_content=n.modified_conf(fname,data['content'])
     return conf_content
 
-app.run()
+app.run(host='0.0.0.0')
 

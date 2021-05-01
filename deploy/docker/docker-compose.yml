@@ -1,0 +1,10 @@
+version: "3.1"
+
+services:
+    nginx-interface:
+      container_name: nginx-interface
+      image: nginx-interface
+      ports:
+        - "5000:5000"
+      volumes:
+        - /usr/local/etc/nginx:/usr/local/etc/nginx
