@@ -64,3 +64,15 @@ class Nginx:
             return "ok"
         except Exception as e:
             print(e)
+    
+    def tail_logs(self):
+        try:
+            path = LOG_PATH[DEVICE]
+            data = {}
+            for each in os.listdir(path):
+                file_path = LOG_PATH[DEVICE]+"{}{}".format("/",each)
+                log_file = open(file_path,"r")
+                data[each] = log_file.readlines()[:100]
+            return data
+        except Exception as e:
+            print(e)

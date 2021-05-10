@@ -14,6 +14,14 @@ def landing():
     """
     return render_template('index.html')
 
+@app.route("/logs")
+def logs_html():
+    """
+    Render logs.html.
+    """
+    data = n.tail_logs()
+    return render_template('logs.html',data=data)
+
 @app.route('/server-status',methods=["GET"])
 def statusserver():
     '''

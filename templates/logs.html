@@ -12,7 +12,7 @@
   <title>NGINX Interface</title>
 </head>
 <script type=text/javascript src="{{url_for('static', filename='index.js') }}"></script>
-<body onload="check_server()">
+<body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -24,36 +24,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <select onchange="folder_files()" class="form-select" id="select-folder" aria-label="Select folder">
-            <option selected>Select Folder</option>
-            <!--Rest are loaded dynamically-->
-          </select>
-          <select onchange="get_file()" class="form-select" id="select-file" aria-label="Select file">
-            <option selected>Select File</option>
-            <!--Rest are loaded dynamically-->
-          </select>
           <li class="nav-item">
-            <a class="nav-link active" onclick="file_save()" id="save-btn" aria-current="page">Save</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" onclick="test_conf()" id="save-btn" aria-current="page">Test</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" id="save-btn" aria-current="page">Add</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" id="save-btn" href="/logs" aria-current="page">Logs</a>
-          </li>
+            <a class="nav-link active" href="/" id="save-btn" aria-current="page">Home</a>
         </ul>
       </div>
     </div>
   </nav>
-  <section id="editor-sec">
-    <div class="container">
-      <div class="form-floating">
-        <textarea class="form-control" placeholder="file content..." id="editor"></textarea>
-      </div>
-    </div>
+  <section class="log_result">
+    {% for key, value in data.items() %}
+        <h3>{{ key }}</h3>
+        {% for items in value %}
+        <p>{{ items }}</p>
+        {% endfor %}
+    {% endfor %}
   </section>
 </body>
 <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
