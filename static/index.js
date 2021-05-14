@@ -92,3 +92,10 @@ async function test_conf() {
         swal("",msg.msg,"info")
     }
 }
+async function create_config()
+{
+    var selectfolder = document.getElementById("select-folder")
+    var folder_name = selectfolder.value
+    var new_file = document.getElementById("file_input").value
+    console.log("called")
+}
