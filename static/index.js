@@ -5,6 +5,19 @@ async function check_server() {
     }
     else if (resp.status == 200) {
         await list_folders()
+        await list_folders_modal()
+    }
+}
+async function list_folders_modal() {
+    const resp = await fetch('config/list/folder')
+    if (resp.status == 200) {
+        var jsonResponse = await resp.json()
+        for (var i = 0; i < jsonResponse.folders.length; i++) {
+            var sel = document.getElementById("select-folder-modal")
+            var op = document.createElement("option")
+            op.value, op.text = jsonResponse.folders[i]
+            sel.appendChild(op)
+        }
     }
 }
 async function list_folders() {
@@ -78,7 +91,6 @@ async function file_save() {
         body: JSON.stringify(file_content)
     })
     if (response.status == 200) {
-        console.log("response",response);
         swal("Success","Your file has been saved", "success")
     }
     else {
@@ -94,8 +106,29 @@ async function test_conf() {
 }
 async function create_config()
 {
-    var selectfolder = document.getElementById("select-folder")
+    var selectfolder = document.getElementById("select-folder-modal")
     var folder_name = selectfolder.value
     var new_file = document.getElementById("file_input").value
-    console.log("called")
+    var file_content = {}
+    file_content["content"] = editor.value.split("\n")
+    let url ="/config/i/" + new_file
+    if(folder_name !="/")
+    {
+        url = "/config/i/" + new_file+"?folder_name="+folder_name
+    }
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(file_content)
+    })
+    if (response.status == 200) {
+        swal("Success","Your file has been saved", "success")
+    }
+    else {
+    swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+    }
 }
+
+
