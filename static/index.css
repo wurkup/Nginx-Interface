@@ -1,18 +1,20 @@
-#editor
-{
+#editor{
     margin-top: 2%;
     height: 100vh;
 }
-.logo
-{
+.logo{
     height: 50px;
     width: 50px;
 }
-footer
-{
+footer{
     margin-top: 2%;
 }
-.nav-link
-{
+.nav-link{
     cursor: pointer;
+}
+.form-select,.nav-item{
+    margin: 10px;
+}
+.nav-item:hover{
+
 }

@@ -130,5 +130,3 @@ async function create_config()
     swal ( "Oops" ,  "Something went wrong!" ,  "error" )
     }
 }
-
-
