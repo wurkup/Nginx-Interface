@@ -107,7 +107,17 @@ async function test_conf() {
 async function create_config()
 {
     var selectfolder = document.getElementById("select-folder-modal")
-    var folder_name = selectfolder.value
+    var r1 = document.getElementById("choose_folder")
+    var r2 = document.getElementById("new_folder")
+    var folder_name = ""
+    if(r1.checked)
+    {
+        folder_name = selectfolder.value
+    }
+    if(r2.checked)
+    {
+        folder_name = document.getElementById("folder_input").value
+    }
     var new_file = document.getElementById("file_input").value
     var file_content = {}
     file_content["content"] = editor.value.split("\n")
@@ -128,5 +138,21 @@ async function create_config()
     }
     else {
     swal ( "Oops" ,  "Something went wrong!" ,  "error" )
+    }
+}
+function handleRadioClick(e)
+{   
+    if(e.target.value==0)
+    {
+        var box = document.getElementById("folder-input-box")
+        box.style.display = "none"
+        var sel = document.getElementById("select-folder-modal")
+        sel.style.display = "block"
+    }
+    else{
+        var box = document.getElementById("folder-input-box")
+        box.style.display = "block"
+        var sel = document.getElementById("select-folder-modal")
+        sel.style.display = "none"
     }
 }

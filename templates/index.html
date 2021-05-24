@@ -6,12 +6,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
   <title>NGINX Interface</title>
 </head>
 <script type=text/javascript src="{{url_for('static', filename='index.js') }}"></script>
+
 <body onload="check_server()">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -39,7 +41,8 @@
             <a class="nav-link active" onclick="test_conf()" id="save-btn" aria-current="page">Test</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" id="save-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-current="page">Add</a>
+            <a class="nav-link active" id="save-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              aria-current="page">Add</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" id="save-btn" href="/logs" aria-current="page">Logs</a>
@@ -49,29 +52,41 @@
     </div>
   </nav>
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create configuration</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Choose Folder</p>
-        <select required class="form-select" id="select-folder-modal" aria-label="Select folder">
-          <option selected>Select Folder</option>
-          <!--Rest are loaded dynamically-->
-        </select>
-        <p>Enter the file name</p>
-        <input type="text" id="file_input" required class="form-control" placeholder="File name with extension">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" onclick="create_config()" class="btn btn-primary">Save</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create configuration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" value="0" onclick="handleRadioClick(event)"; id="choose_folder" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Choose Folder
+          </label>
+          <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="handleRadioClick(event)"; value="1" id="new_folder">
+          <label class="form-check-label" for="flexRadioDefault1">
+            New Folder
+          </label>
+          <select required class="form-select" id="select-folder-modal" aria-label="Select folder">
+            <option selected>Select Folder</option>
+            <!--Rest are loaded dynamically-->
+          </select>
+          <!--Text box hidden to enter a folder name-->
+          <div id="folder-input-box">
+            <p>Enter the Folder name</p>
+            <input type="text" id="folder_input" required class="form-control" placeholder="New folder name">
+          </div>
+          <p>Enter the file name</p>
+          <input type="text" id="file_input" required class="form-control" placeholder="File name with extension">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" onclick="create_config()" class="btn btn-primary">Save</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <section id="editor-sec">
     <div class="container">
       <div class="form-floating">
