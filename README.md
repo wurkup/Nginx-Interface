@@ -1,5 +1,5 @@
 # Nginx-Interface
-The dashboard for managing Nginx configurations
+Nginx is a widely used reverse proxy. Most of the time we all have to ssh to the servers, manage the nginx and change the configuration files. So in-order to make life simpler we decided to build a UI that can take care of Nginx management. If you want to make nginx management simple do try out the application and I am looking forward to your feedback, pull requests and feature requests.
 
 ## Features
 - 1
