@@ -53,6 +53,8 @@ def field_config(_type,field=None):
             process = subprocess.Popen('nginx -t', shell= True,stderr=subprocess.PIPE)
             out_msg = process.stderr.read()
             return {"code":403,"msg":out_msg.decode("utf-8")}
+        elif exitcode == 127:
+            return {"code":127,"msg":"nginx not found"}
         return {"code":200,"msg":"nginx configuration test success"}
 
 @app.route('/config/<name>',methods=["PUT"])
