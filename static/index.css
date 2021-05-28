@@ -19,6 +19,18 @@ footer{
 .form-select,.nav-item{
     margin: 10px;
 }
+
+.form-select{
+    width: 200px;
+}
+.container {
+    max-width: 1100px;
+    padding: 10px;
+}
+#editor-sec{
+    background-color: #212529;
+    font-family: 'Source Code Pro', monospace;
+}
 .nav-item:hover{
 
 }

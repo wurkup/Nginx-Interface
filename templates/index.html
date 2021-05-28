@@ -10,6 +10,8 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"> 
   <title>NGINX Interface</title>
 </head>
 <script type=text/javascript src="{{url_for('static', filename='index.js') }}"></script>
@@ -89,6 +91,7 @@
   </div>
   <section id="editor-sec">
     <div class="container">
+      <div><h3></h3></div>
       <div class="form-floating">
         <textarea class="form-control" placeholder="file content..." id="editor"></textarea>
       </div>
