@@ -67,7 +67,18 @@ class Nginx:
             return "ok"
         except Exception as e:
             print(e)
-    
+
+    def delete_conf(self,file_name,folder_name):
+        try:
+            path = NGINX_PATH[DEVICE]+"{}{}".format("/",file_name)
+            if folder_name:
+                path = NGINX_PATH[DEVICE]+"{}{}{}{}".format("/",folder_name,"/",file_name)
+            os.remove(path)
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
     def tail_logs(self):
         try:
             path = LOG_PATH[DEVICE]

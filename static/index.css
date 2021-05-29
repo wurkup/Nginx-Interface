@@ -31,6 +31,6 @@ footer{
     background-color: #212529;
     font-family: 'Source Code Pro', monospace;
 }
-.nav-item:hover{
-
+#ftitle{
+    color: white;
 }
