@@ -85,5 +85,17 @@ def modified_config(fname):
     conf_content=n.modified_conf(fname,foldername,data['content'])
     return conf_content
 
+@app.route('/config/i/<fname>',methods=["DELETE"])
+def delete_config(fname):
+    '''
+    Function to delete the conf file
+    '''
+    foldername = request.args.get('folder_name',None)
+    resp=n.delete_conf(fname, foldername)
+    if resp:
+        return "ok"
+    else:
+        return "error",500
+
 app.run(host='0.0.0.0')
 
