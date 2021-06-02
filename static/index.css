@@ -39,3 +39,7 @@ footer{
 #ftitle{
     color: white;
 }
+footer>div>small>a
+{
+    text-decoration: none;
+}
