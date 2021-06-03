@@ -30,7 +30,7 @@ def statusserver():
     is_installed = subprocess.call("nginx -ver",shell=True)
     print("The exit code was: %s" % is_installed)
     if is_installed == 127:
-        return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"}
+        return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"},404
     return {"code":200,"msg":"Nginx available"}
 
 @app.route('/config/<_type>/<field>',methods=["GET"])
