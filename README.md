@@ -17,8 +17,8 @@ Most of the time developers are expected to `ssh to servers`, `manage the nginx`
 - ```sudo docker-compose -f docker-compose.yml up -d```
 
 ### Running docker
-```docker run -d --restart=always --name nginx-interface -v /usr/local/etc/nginx:/etc/nginx -p 5000:5000 nginx-interface:latest```
-- make sure to update ` -v /etc/nginx:/etc/nginx ` to the path mentioned above based on your OS that you are running.
+- ```docker run -d --restart=always --name nginx-interface:<tag> -v <source-volume>:/etc/nginx -p 5000:5000 nginx-interface:latest```
+- make sure to update `<source-volume>` to the path mentioned above based on the OS that you are running.
 
 ### Run it local
 - Make sure to have `python3`,`pip3` installed
