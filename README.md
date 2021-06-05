@@ -8,6 +8,8 @@ Most of the time developers are expected to `ssh to servers`, `manage the nginx`
 
 ## Getting Started
 
+- You can find the latest docker image at [DockerHub](https://hub.docker.com/repository/docker/wurkup/nginx-interface)
+
 ### Deploy using docker-compose
 - There exists a `docker-compose.yml` file in `deploy/docker` which deploys the latest docker instance
 - Make sure to update `volumes` to your nginx path 
