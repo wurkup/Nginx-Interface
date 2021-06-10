@@ -1,12 +1,12 @@
 async function check_server() {
-    const resp = await fetch('/server-status')
-    if (resp.status === 404) {
-        swal("Oops", "NGINX not found. Please install and refresh this page", "error")
-    }
-    else if (resp.status == 200) {
+    // const resp = await fetch('/server-status')
+    // if (resp.status === 404) {
+        // swal("Oops", "NGINX not found. Please install and refresh this page", "error")
+    // }
+    // else if (resp.status == 200) {
         await list_folders()
         await list_folders_modal()
-    }
+    // }
 }
 async function list_folders_modal() {
     const resp = await fetch('config/list/folder')
