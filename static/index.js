@@ -69,6 +69,7 @@ async function get_file() {
         ftitle.innerHTML = sel.value
         editor.value = await resp.text()
     }
+    
 }
 async function file_save() {
     var sel = document.getElementById("select-file")
@@ -130,6 +131,7 @@ async function create_config() {
     })
     if (response.status == 200) {
         swal("Success", "Your file has been saved", "success")
+        window.location.reload();
     }
     else {
         swal("Oops", "Something went wrong!", "error")
@@ -172,6 +174,7 @@ async function delete_file() {
         })
         if (response.status == 200) {
             swal("Success", "Your file has been removed", "success")
+            window.location.reload();
         }
         else {
             swal("Oops", "Something went wrong!", "error")

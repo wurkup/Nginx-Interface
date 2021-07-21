@@ -29,6 +29,7 @@ Most of the time developers are expected to `ssh to servers`, `manage the nginx`
     - `python3 -m venv env`
 - Activate virtual environment
     - `source env/bin/activate`
+- `pip install -r requirements.txt`    
 - `python3 server.py`
 
 ### See UI
