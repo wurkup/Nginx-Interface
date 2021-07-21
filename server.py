@@ -91,8 +91,8 @@ def delete_config(fname):
     else:
         return "error",500
 
-# print("Server started, Running on port 5000")
-# http_server = WSGIServer(('0.0.0.0', 5000), app)
-# http_server.serve_forever()
+print("Server started, Running on port 5000")
+http_server = WSGIServer(('0.0.0.0', 5000), app)
+http_server.serve_forever()
 
-app.run()
+# app.run()
