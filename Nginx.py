@@ -60,7 +60,7 @@ class Nginx:
                 path = NGINX_PATH[DEVICE]+"{}{}{}{}".format("/",folder_name,"/",file_name)
                 folder_path = NGINX_PATH[DEVICE]+"{}{}".format("/",folder_name)
                 if not os.path.exists(folder_path):
-                    os.makedir(folder_path)
+                    os.mkdir(folder_path)
             conf_file = open(path,"w")
             for each in data:
                 conf_file.write("%s\n" % each)
