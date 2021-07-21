@@ -15,7 +15,7 @@ Most of the time developers are expected to `ssh to servers`, `manage the nginx`
 - Make sure to update `volumes` to your nginx path 
     - Ex:
         - if you are running nginx on `mac` then your volume must be - `/usr/local/etc/nginx:/etc/nginx`
-        - if you are running nginx on `linux` then your volume must be - `/etc/nginx:/etc/nginx`
+        - if you are running nginx on `linux` then your volume must be - `/ttetc/nginx:/etc/nginx`
 - ```sudo docker-compose -f docker-compose.yml up -d```
 
 ### Running docker
@@ -29,6 +29,7 @@ Most of the time developers are expected to `ssh to servers`, `manage the nginx`
     - `python3 -m venv env`
 - Activate virtual environment
     - `source env/bin/activate`
+- `pip install -r requirements.txt`    
 - `python3 server.py`
 
 ### See UI
