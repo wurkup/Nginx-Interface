@@ -131,7 +131,11 @@ async function create_config() {
     })
     if (response.status == 200) {
         swal("Success", "Your file has been saved", "success")
-        window.location.reload();
+        .then((value)=> {
+            if(value){
+                window.location.reload();
+            }
+        })
     }
     else {
         swal("Oops", "Something went wrong!", "error")
@@ -174,7 +178,11 @@ async function delete_file() {
         })
         if (response.status == 200) {
             swal("Success", "Your file has been removed", "success")
-            window.location.reload();
+            .then((value)=> {
+                if(value){
+                    window.location.reload();
+                }
+            })
         }
         else {
             swal("Oops", "Something went wrong!", "error")
