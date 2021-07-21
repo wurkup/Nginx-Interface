@@ -2,6 +2,9 @@ from flask import Flask,render_template,request
 import os,subprocess
 from subprocess import check_output
 from Nginx import Nginx
+from gevent import monkey
+monkey.patch_all()
+from gevent.pywsgi import WSGIServer
 gui_dir = os.path.join(os.path.dirname(__file__), 'templates')
 static_dir = os.path.join(os.path.dirname(__file__), 'static')
 n = Nginx()
@@ -20,7 +23,6 @@ def statusserver():
     With exit code 0,127 we can see if nginx is installed or not 
     '''
     is_installed = subprocess.call("nginx -ver",shell=True)
-    print("The exit code was: %s" % is_installed)
     if is_installed == 127:
         return {"code":is_installed,"msg":"Nginx not found,Please install Nginx"},404
     return {"code":200,"msg":"Nginx available"}
@@ -89,5 +91,7 @@ def delete_config(fname):
     else:
         return "error",500
 
-app.run(host='0.0.0.0')
+print("Server started, Running on port 5000")
+http_server = WSGIServer(('0.0.0.0', 5000), app)
+http_server.serve_forever()
 

@@ -130,3 +130,6 @@ dmypy.json
 
 # ignore nginx conf
 *.conf
+
+.DS_Store
+runserver.bin
