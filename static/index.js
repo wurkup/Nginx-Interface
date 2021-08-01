@@ -94,7 +94,7 @@ async function file_save() {
         swal("Success", "Your file has been saved", "success")
     }
     else {
-        swal("Oops", "Something went wrong!", "error")
+        swal("Oops", await response.text(), "error")
     }
 }
 async function test_conf() {

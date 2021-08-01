@@ -63,10 +63,11 @@ class Nginx:
                     os.mkdir(folder_path)
             conf_file = open(path,"w")
             for each in data:
-                conf_file.write("%s\n" % each)
+                con_file.write("%s\n" % each)
             return "ok"
         except Exception as e:
             print(e)
+            return str(e),500
 
     def delete_conf(self,file_name,folder_name):
         try:
@@ -74,7 +75,7 @@ class Nginx:
             if folder_name:
                 path = NGINX_PATH[DEVICE]+"{}{}{}{}".format("/",folder_name,"/",file_name)
             os.remove(path)
-            return True
+            return "ok"
         except Exception as e:
             print(e)
-            return False
+            return str(e),500

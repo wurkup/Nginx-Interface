@@ -86,10 +86,7 @@ def delete_config(fname):
     '''
     foldername = request.args.get('folder_name',None)
     resp=n.delete_conf(fname, foldername)
-    if resp:
-        return "ok"
-    else:
-        return "error",500
+    return resp
 
 print("Server started, Running on port 5000")
 http_server = WSGIServer(('0.0.0.0', 5000), app)
