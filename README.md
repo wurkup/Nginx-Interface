@@ -1,13 +1,13 @@
 # Nginx-Interface
 Nginx is a widely used reverse proxy.\
-Most of the time developers are expected to `ssh to servers`, `manage the nginx` and `change the configuration` files which is a tad bit tedious. So, in-order to make life simpler `Wurkup` decided to build a UI that can help take care of Nginx management. We would love for you to use the tool and hit us back with some feedback!
+Most of the time developers are expected to <b>ssh to servers</b>, <b>manage the nginx</b> and <b>change the configuration</b> files which is a tad bit tedious. So, in-order to make life simpler <b>[Wurkup](https://github.com/wurkup)</b> decided to build a UI that can help take care of Nginx management. We would love for you to use the tool and hit us back with some feedback!
 
 ## Features
 - Manage existing configurations
 - Able to create new folders and store new configurations
 
 ## Getting Started
-- Download for Ubuntu 16 onwards
+- Download for Ubuntu 18+ & python 3.6 onwards
 - Download for Mac OS Big Sur
 
 ### Run it local
@@ -20,4 +20,4 @@ Most of the time developers are expected to `ssh to servers`, `manage the nginx`
 - `python3 server.py`
 
 ### See UI
-- `http://localhost:5000`
+- [Open in Browser - http://localhost:5000](http://localhost:5000)
