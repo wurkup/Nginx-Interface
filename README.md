@@ -5,10 +5,17 @@ Most of the time developers are expected to <b>ssh to servers</b>, <b>manage the
 ## Features
 - Manage existing configurations
 - Able to create new folders and store new configurations
+- Test the configuration
 
 ## Getting Started
 - Download for Ubuntu 18+ & python 3.6 onwards
+    - Extract the tar file
+    - run `./nginx-interface`
+    Note: In some machines the nginx path `/etc/nginx` may not have root permissions , make sure to give root permissions to the nginx folder.
 - Download for Mac OS Big Sur
+    - Extract the tar file
+    - run `./nginx-interface`
+    Note: Mac identifies this as unknown software, so enable it in security & privacy under system preferences.
 
 ### Run it local
 - Make sure to have `python3`,`pip3` installed
