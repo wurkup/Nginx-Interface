@@ -46,7 +46,6 @@ class Nginx:
             path = NGINX_PATH[DEVICE]+"{}{}".format("/",file_name)
             if folder_name:
                 path = NGINX_PATH[DEVICE]+"{}{}{}{}".format("/",folder_name,"/",file_name)
-            print(path,folder_name)
             f = open(path,"r")
             content = f.read()
             return content
@@ -63,7 +62,7 @@ class Nginx:
                     os.mkdir(folder_path)
             conf_file = open(path,"w")
             for each in data:
-                con_file.write("%s\n" % each)
+                conf_file.write("%s\n" % each)
             return "ok"
         except Exception as e:
             print(e)
