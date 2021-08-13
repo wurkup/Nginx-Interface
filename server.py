@@ -1,13 +1,12 @@
 from flask import Flask,render_template,request
 import os,subprocess
 from subprocess import check_output
-from Nginx import Nginx
+from Nginx import *
 from gevent import monkey
 monkey.patch_all()
 from gevent.pywsgi import WSGIServer
 gui_dir = os.path.join(os.path.dirname(__file__), 'templates')
 static_dir = os.path.join(os.path.dirname(__file__), 'static')
-n = Nginx()
 app = Flask(__name__, static_folder=static_dir, template_folder=gui_dir)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 @app.route('/')
@@ -37,10 +36,10 @@ def field_config(_type,field=None):
     if _type =="list":
         if field == "file":
             if folder_name:
-                return {"code":200,"files":n.get_folder_files(folder_name)}
-            return {"code":200,"files":n.get_file_list()}
+                return {"code":200,"files":get_folder_files(folder_name)}
+            return {"code":200,"files":get_file_list()}
         if field == "folder":
-            return {"code":200,"folders":n.get_folder_list()}
+            return {"code":200,"folders":get_folder_list()}
     elif _type == "test":
         exitcode = subprocess.call("nginx -t",shell=True)
         if exitcode == 1:
@@ -57,7 +56,7 @@ def create_config(name):
     Function to write the contents of conf to a file
     '''
     data = request.json
-    n.create(name,data['content'])
+    create(name,data['content'])
     return "ok"
 
 @app.route('/config/i/<fname>',methods=["GET"])
@@ -66,7 +65,7 @@ def get_config(fname):
     Function to get the contents of conf file
     '''
     folder_name = request.args.get('folder_name',None)
-    conf_content=n.get_conf(folder_name,fname)
+    conf_content=get_conf(folder_name,fname)
     return conf_content
 
 @app.route('/config/i/<fname>',methods=["PUT"])
@@ -76,7 +75,7 @@ def modified_config(fname):
     '''
     foldername = request.args.get('folder_name',None)
     data = request.json
-    conf_content=n.modified_conf(fname,foldername,data['content'])
+    conf_content=modified_conf(fname,foldername,data['content'])
     return conf_content
 
 @app.route('/config/i/<fname>',methods=["DELETE"])
@@ -85,7 +84,7 @@ def delete_config(fname):
     Function to delete the conf file
     '''
     foldername = request.args.get('folder_name',None)
-    resp=n.delete_conf(fname, foldername)
+    resp=delete_conf(fname, foldername)
     return resp
 
 print("Server started, Running on port 5000")
