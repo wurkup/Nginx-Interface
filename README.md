@@ -5,7 +5,7 @@ Most of the time developers are expected to <b>ssh to servers</b>, <b>manage the
 ## Features
 - Automatic reading of configuration files (supporting up to 1 level of nested structure)
 - Creation of new files and folders
-- Ability to modify and test the configurations
+- Ability to modify and test the configurations <br>
 **Don't see a feature on this list?** Search our issue tracker if someone has already requested it and upvote it, or open a new issue if not. We prioritize our roadmap based on your feedback. 
 
 ## Getting Started
