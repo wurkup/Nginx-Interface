@@ -8,14 +8,17 @@ Most of the time developers are expected to <b>ssh to servers</b>, <b>manage the
 - Test the configuration
 
 ## Getting Started
-- Download for Ubuntu 18+ & python 3.6 onwards
+- Ubuntu 18+ & python 3.6 onwards
     - Extract the tar file
-    - run `./nginx-interface`
+    - run `./server`
     Note: In some machines the nginx path `/etc/nginx` may not have root permissions , make sure to give root permissions to the nginx folder.
-- Download for Mac OS Big Sur
+- Mac OS Big Sur
     - Extract the tar file
-    - run `./nginx-interface`
+    - run `./server`
     Note: Mac identifies this as unknown software, so enable it in security & privacy under system preferences.
+- Centos 8
+    - Extract the tar file
+    - run `./server`
 
 ### Run it local
 - Make sure to have `python3`,`pip3` installed
